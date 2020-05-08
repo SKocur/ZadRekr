@@ -15,9 +15,7 @@ class FunctionalFileReader {
   }
 
   void forEachReadLine(Consumer<String> lineConsumer) {
-    try {
-      BufferedReader bf = new BufferedReader(new FileReader(fileName));
-
+    try (BufferedReader bf = new BufferedReader(new FileReader(fileName))) {
       String line;
       while ((line = bf.readLine()) != null) {
         lineConsumer.accept(line);
